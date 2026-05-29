@@ -181,7 +181,16 @@
           sf.style.display = 'none';
           const ok = document.querySelector('#heroSignupOk');
           if (ok) ok.style.display = 'block';
+          if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'hero' });
         });
+    });
+  }
+
+  // -------- sticky bar newsletter -> GA4 event --------
+  const sbfOrig = document.getElementById('stickyBarForm');
+  if (sbfOrig) {
+    sbfOrig.addEventListener('submit', () => {
+      if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'sticky_bar' });
     });
   }
 
