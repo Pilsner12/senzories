@@ -49,12 +49,15 @@
     });
   }
 
-  // -------- testimonials infinite scroll — duplicate cards --------
+  // -------- testimonials infinite scroll — duplicate cards inside same track --------
   const track = document.getElementById('testiTrack');
   if (track) {
-    const clone = track.cloneNode(true);
-    clone.setAttribute('aria-hidden', 'true');
-    track.parentElement.appendChild(clone);
+    const cards = Array.from(track.children);
+    cards.forEach((card) => {
+      const clone = card.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+    });
   }
 
   // -------- nav background on scroll --------
