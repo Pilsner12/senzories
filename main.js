@@ -28,12 +28,19 @@
   // -------- sticky CTA bar --------
   const stickyBar = document.getElementById('stickyBar');
   const hero = document.getElementById('domov');
+  const footer = document.querySelector('.footer');
+  let heroGone = false;
+  let footerVisible = false;
+  const updateSticky = () => {
+    const show = heroGone && !footerVisible;
+    stickyBar.classList.toggle('visible', show);
+    stickyBar.setAttribute('aria-hidden', String(!show));
+  };
   if (stickyBar && hero) {
-    const stickyIO = new IntersectionObserver(([e]) => {
-      stickyBar.classList.toggle('visible', !e.isIntersecting);
-      stickyBar.setAttribute('aria-hidden', String(e.isIntersecting));
-    }, { threshold: 0.1 });
-    stickyIO.observe(hero);
+    new IntersectionObserver(([e]) => { heroGone = !e.isIntersecting; updateSticky(); }, { threshold: 0.1 }).observe(hero);
+  }
+  if (stickyBar && footer) {
+    new IntersectionObserver(([e]) => { footerVisible = e.isIntersecting; updateSticky(); }, { threshold: 0.1 }).observe(footer);
   }
   const sbf = document.getElementById('stickyBarForm');
   if (sbf) {

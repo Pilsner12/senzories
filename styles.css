@@ -318,6 +318,11 @@ em, .it { font-style: italic; }
 .hero-signup-label { font-size: 0.9rem; color: var(--ink); margin-bottom: 14px; }
 .hero-signup-note { font-size: 0.78rem; color: var(--ink-soft); margin-top: 10px; }
 .hero-signup-ok { display: none; font-size: 0.95rem; color: var(--olive-deep); font-weight: 500; margin-top: 12px; }
+.gdpr-check { display: flex; align-items: flex-start; gap: 8px; margin-top: 10px; font-size: 0.78rem; color: var(--ink-soft); line-height: 1.4; }
+.gdpr-check input[type="checkbox"] { margin-top: 2px; flex-shrink: 0; accent-color: var(--olive-deep); }
+.gdpr-check a { color: var(--olive-deep); text-decoration: underline; }
+.sticky-bar .gdpr-check { color: rgba(255,255,255,0.7); font-size: 0.72rem; }
+.sticky-bar .gdpr-check a { color: rgba(255,255,255,0.9); }
 .hero-signup-form { display: flex; gap: 8px; flex-wrap: nowrap; align-items: stretch; max-width: 420px; }
 .hero-signup-form input[type="email"] {
   flex: 1 1 200px; padding: 13px 18px;
