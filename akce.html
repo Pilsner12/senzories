@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P4Y4MSS44J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-P4Y4MSS44J');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Senzories — Zanechte svůj email</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #F4EEE0;
+    --forest: #39402C;
+    --olive: #6C754F;
+    --sage: #9CA886;
+    --ink: #2C2F24;
+    --ink-soft: #5a5f4a;
+    --muted: #8a8f7a;
+    --linen: #F8F4EA;
+    --line: rgba(75,84,55,0.12);
+    --r-pill: 100px;
+    --r-md: 20px;
+  }
+  html, body {
+    height: 100%;
+    background: var(--paper);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    min-height: 100svh;
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .logo { height: 44px; width: auto; margin-bottom: 40px; }
+  .badge {
+    display: inline-block;
+    background: rgba(156,168,134,0.2);
+    color: var(--olive);
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 6px 16px; border-radius: var(--r-pill);
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 700; line-height: 1.15;
+    color: var(--forest);
+    margin-bottom: 16px;
+    max-width: 14ch;
+    margin-left: auto; margin-right: auto;
+  }
+  .sub {
+    font-size: 1.05rem; color: var(--ink-soft);
+    line-height: 1.6; margin-bottom: 40px;
+    max-width: 32ch;
+  }
+  form {
+    display: flex; gap: 10px; flex-wrap: nowrap;
+    width: 100%; max-width: 440px;
+    margin: 0 auto 12px;
+  }
+  input[type="email"] {
+    flex: 1; padding: 16px 20px;
+    border: 1.5px solid rgba(75,84,55,0.2);
+    border-radius: var(--r-pill);
+    background: #fff; color: var(--ink);
+    font-size: 1rem; outline: none;
+    transition: border-color .2s;
+  }
+  input[type="email"]:focus { border-color: var(--olive); }
+  button {
+    padding: 16px 28px;
+    background: var(--forest); color: #fff;
+    border: none; border-radius: var(--r-pill);
+    font-size: 1rem; font-weight: 600;
+    cursor: pointer; white-space: nowrap;
+    transition: background .2s, transform .2s;
+  }
+  button:hover { background: #4a5238; transform: translateY(-2px); }
+  .note { font-size: 0.8rem; color: var(--muted); }
+  .ok {
+    display: none;
+    background: var(--linen); border: 1px solid var(--line);
+    border-radius: var(--r-md); padding: 32px;
+    margin-top: 8px; max-width: 440px; width: 100%;
+  }
+  .ok-emoji { font-size: 2.5rem; margin-bottom: 12px; }
+  .ok h2 { font-size: 1.4rem; color: var(--forest); margin-bottom: 8px; }
+  .ok p { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6; }
+  .hidden { display: none !important; }
+  @media (max-width: 480px) {
+    form { flex-direction: column; }
+    button { width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <img src="assets/logo.png" alt="Senzories" class="logo">
+  <span class="badge">Limitovaná první várka</span>
+  <h1>Chcete být první?</h1>
+  <p class="sub">Zanechte email a dáme vám vědět jako první, až půjde do prodeje.</p>
+
+  <form id="akceForm" name="newsletter-akce" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="newsletter-akce">
+    <p class="hidden"><label>Nevyplňujte<input name="bot-field" title="Nevyplňujte"></label></p>
+    <input type="email" name="email" placeholder="vas@email.cz" required aria-label="Váš e-mail">
+    <button type="submit">Chci být první</button>
+  </form>
+  <p class="note">Bez spamu. Pouze když půjde do prodeje.</p>
+
+  <div class="ok" id="akceOk">
+    <div class="ok-emoji">🎉</div>
+    <h2>Výborně!</h2>
+    <p>Ozveme se vám jako úplně prvním.<br>Děkujeme za zájem o Senzories.</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('akceForm');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString() })
+        .finally(() => {
+          form.style.display = 'none';
+          document.querySelector('.note').style.display = 'none';
+          document.getElementById('akceOk').style.display = 'block';
+          if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'akce' });
+        });
+    });
+  </script>
+</body>
+</html>
