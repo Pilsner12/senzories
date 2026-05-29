@@ -411,11 +411,13 @@
         <div class="catalog reveal d1">
           <h3>Vyžádat katalog</h3>
           <p>Zanechte email a pošleme vám aktuální katalog produktů Senzories.</p>
-          <form class="catalog-form" id="catalogForm">
+          <form class="catalog-form" id="catalogForm" name="katalog" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="katalog">
+            <input type="hidden" name="subject" value="Dinopark 30.5.2026">
+            <p class="hidden"><label>Nevyplňujte<input name="bot-field" title="Nevyplňujte"></label></p>
             <input type="email" name="cemail" placeholder="vas@email.cz" required>
             <button type="submit" class="btn btn-primary">Poslat</button>
           </form>
-          <p class="cat-ok" style="display:none;font-size:0.85rem;color:var(--olive-deep);margin-top:10px;">Děkujeme! Otevře se váš e-mailový klient s předvyplněnou žádostí.</p>
         </div>
       </div>
 

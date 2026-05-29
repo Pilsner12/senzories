@@ -190,17 +190,14 @@
     });
   }
 
-  // -------- catalog form -> mailto (leave email for catalog) --------
+  // -------- catalog form -> Netlify + redirect to PDF --------
   const kf = document.querySelector('#catalogForm');
   if (kf) {
     kf.addEventListener('submit', (ev) => {
       ev.preventDefault();
-      const email = (new FormData(kf).get('cemail') || '').toString();
-      const subject = encodeURIComponent('Žádost o katalog Senzories');
-      const body = encodeURIComponent(`Dobrý den,\nmám zájem o katalog Senzories.\nMůj kontaktní email: ${email}\n\nDěkuji!`);
-      window.location.href = `mailto:${TO}?subject=${subject}&body=${body}`;
-      const ok = kf.querySelector('.cat-ok');
-      if (ok) ok.style.display = 'block';
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(kf)).toString() })
+        .finally(() => { window.location.href = '/dekujeme.html'; });
     });
   }
 })();
