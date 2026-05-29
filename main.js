@@ -1,5 +1,16 @@
 // Senzories — scroll reveal, nav, parallax, form handlers
 (function () {
+  // -------- clean anchor navigation (no hash in URL) --------
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const target = document.querySelector(a.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth' });
+    history.replaceState(null, '', location.pathname);
+  });
+
   // -------- nav background on scroll --------
   const nav = document.querySelector('.nav');
   const onScroll = () => {
