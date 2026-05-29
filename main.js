@@ -25,6 +25,30 @@
     if (initEl) setTimeout(() => initEl.scrollIntoView(), 80);
   }
 
+  // -------- sticky CTA bar --------
+  const stickyBar = document.getElementById('stickyBar');
+  const hero = document.getElementById('domov');
+  if (stickyBar && hero) {
+    const stickyIO = new IntersectionObserver(([e]) => {
+      stickyBar.classList.toggle('visible', !e.isIntersecting);
+      stickyBar.setAttribute('aria-hidden', String(e.isIntersecting));
+    }, { threshold: 0.1 });
+    stickyIO.observe(hero);
+  }
+  const sbf = document.getElementById('stickyBarForm');
+  if (sbf) {
+    sbf.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(sbf)).toString() })
+        .finally(() => {
+          sbf.style.display = 'none';
+          const ok = document.getElementById('stickyBarOk');
+          if (ok) ok.style.display = 'block';
+        });
+    });
+  }
+
   // -------- nav background on scroll --------
   const nav = document.querySelector('.nav');
   const onScroll = () => {

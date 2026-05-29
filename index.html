@@ -58,6 +58,18 @@
 </head>
 <body>
 
+<!-- ============ STICKY CTA BAR ============ -->
+<div class="sticky-bar" id="stickyBar" aria-hidden="true">
+  <p class="sticky-bar-text">První várka bude limitovaná — zajistěte si místo</p>
+  <form class="sticky-bar-form" id="stickyBarForm" name="newsletter-sticky" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="newsletter-sticky">
+    <p class="hidden"><label>Nevyplňujte<input name="bot-field" title="Nevyplňujte"></label></p>
+    <input type="email" name="email" placeholder="vas@email.cz" required aria-label="Váš e-mail">
+    <button type="submit" class="btn btn-primary">Chci být první</button>
+  </form>
+  <p class="sticky-bar-ok" id="stickyBarOk">Výborně! Ozveme se jako první.</p>
+</div>
+
 <!-- ============ NAV ============ -->
 <nav class="nav">
   <a class="nav-logo" href="#domov"><img src="assets/logo.png" alt="Senzories"></a>
