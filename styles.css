@@ -166,7 +166,8 @@ em, .it { font-style: italic; }
   color: #fff; font-size: 0.9rem; font-weight: 500;
   white-space: nowrap; flex-shrink: 0;
 }
-.sticky-bar-form { display: flex; gap: 8px; flex-wrap: nowrap; }
+.sticky-bar-form { display: flex; flex-direction: column; gap: 6px; }
+.sticky-bar-form .sticky-bar-row { display: flex; gap: 8px; flex-wrap: nowrap; }
 .sticky-bar-form input[type="email"] {
   padding: 10px 16px; border-radius: var(--r-pill);
   border: 1.5px solid rgba(255,255,255,0.3);
@@ -183,6 +184,7 @@ em, .it { font-style: italic; }
   .sticky-bar { flex-direction: column; gap: 10px; padding: 16px; }
   .sticky-bar-text { white-space: normal; text-align: center; font-size: 0.85rem; }
   .sticky-bar-form { width: 100%; }
+  .sticky-bar-form .sticky-bar-row { width: 100%; }
   .sticky-bar-form input[type="email"] { flex: 1; min-width: 0; }
 }
 
