@@ -254,15 +254,16 @@ em, .it { font-style: italic; }
 .chip:hover .chip-ic { transform: translateY(-4px); background: rgba(156,168,134,0.3); }
 .chip p { font-size: 0.82rem; line-height: 1.25; color: var(--ink-soft); font-weight: 500; }
 
-.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
-.btn-sage {
-  background: #7f9450; color: #fff;
-  box-shadow: 0 14px 28px -14px rgba(127,148,80,0.7);
-  padding: 17px 32px;
+.hero-link {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 28px;
+  font-size: 0.92rem; font-weight: 500; color: var(--olive-deep);
+  text-decoration: none; transition: gap .2s, color .2s;
 }
-.btn-sage:hover { background: #6f8444; transform: translateY(-3px); }
+.hero-link svg { width: 16px; height: 16px; transition: transform .2s; }
+.hero-link:hover { color: var(--forest); gap: 12px; }
+.hero-link:hover svg { transform: translateX(3px); }
 
-.hero-signup { margin-top: 36px; }
+.hero-signup { margin-top: 44px; }
 .hero-signup-label { font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 10px; font-weight: 500; }
 .hero-signup-form { display: flex; gap: 8px; flex-wrap: nowrap; align-items: stretch; max-width: 420px; }
 .hero-signup-form input[type="email"] {
