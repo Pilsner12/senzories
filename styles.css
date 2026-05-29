@@ -325,8 +325,9 @@ em, .it { font-style: italic; }
 .gdpr-check a { color: var(--olive-deep); text-decoration: underline; }
 .sticky-bar .gdpr-check { color: rgba(255,255,255,0.7); font-size: 0.72rem; }
 .sticky-bar .gdpr-check a { color: rgba(255,255,255,0.9); }
-.hero-signup-form { display: flex; gap: 8px; flex-wrap: nowrap; align-items: stretch; max-width: 420px; }
-.hero-signup-form input[type="email"] {
+.hero-signup-form { display: flex; flex-direction: column; gap: 10px; max-width: 420px; }
+.hero-signup-row { display: flex; gap: 8px; align-items: stretch; }
+.hero-signup-row input[type="email"] {
   flex: 1 1 200px; padding: 13px 18px;
   border: 1.5px solid rgba(75,84,55,0.22);
   border-radius: var(--r-pill); background: rgba(255,255,255,0.72);
@@ -335,8 +336,9 @@ em, .it { font-style: italic; }
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
 }
-.hero-signup-form input[type="email"]:focus { border-color: var(--olive-deep); background: #fff; }
-.hero-signup-form .btn-primary { white-space: nowrap; }
+.hero-signup-row input[type="email"]:focus { border-color: var(--olive-deep); background: #fff; }
+.hero-signup-row .btn-primary { white-space: nowrap; }
+.hero-signup-row input[type="email"] { flex: 1; }
 
 .hero-leaf { position: absolute; pointer-events: none; color: var(--sage); z-index: 2; }
 .leaf-a { top: 92px; left: 39%; width: 88px; opacity: 0.5; }
