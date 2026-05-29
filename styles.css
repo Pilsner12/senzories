@@ -603,10 +603,10 @@ em, .it { font-style: italic; }
 .field label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--ink-soft); margin-bottom: 8px; letter-spacing: 0.02em; }
 .field input, .field textarea {
   width: 100%; font-family: var(--sans); font-size: 1rem; color: var(--ink);
-  background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
-  padding: 14px 16px; transition: border-color .25s, box-shadow .25s;
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md);
+  padding: 14px 18px; transition: border-color .25s, box-shadow .25s;
 }
-.field textarea { resize: vertical; min-height: 110px; }
+.field textarea { resize: vertical; min-height: 110px; border-radius: var(--r-md); }
 .field input:focus, .field textarea:focus { outline: none; border-color: var(--olive); box-shadow: 0 0 0 3px rgba(108,117,79,0.15); }
 .card-form .btn-primary { width: 100%; justify-content: center; margin-top: 6px; }
 .form-note { font-size: 0.8rem; color: var(--muted); text-align: center; margin-top: 14px; }
