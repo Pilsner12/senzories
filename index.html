@@ -344,7 +344,9 @@
 
       <!-- form -->
       <div class="reveal d1">
-        <form class="card-form" id="contactForm">
+        <form class="card-form" id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="kontakt">
+          <p class="hidden" style="display:none"><input name="bot-field"></p>
           <h3>Napište mi</h3>
           <p class="sub">Odpovím obvykle do 24 hodin.</p>
           <div class="field">
@@ -360,7 +362,7 @@
             <textarea id="message" name="message" placeholder="Na co se chcete zeptat?" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Odeslat zprávu</button>
-          <p class="form-note">Otevře se váš e-mailový klient s předvyplněnou zprávou.</p>
+          <p class="form-note">Zpráva bude odeslána přímo.</p>
         </form>
       </div>
     </div>
