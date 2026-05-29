@@ -1,15 +1,29 @@
 // Senzories — scroll reveal, nav, parallax, form handlers
 (function () {
-  // -------- clean anchor navigation (no hash in URL) --------
+  // -------- section id → clean URL slug mapping --------
+  const slugMap = { domov: '/', filozofie: '/filozofie', proc: '/proc', produkty: '/produkty', pribeh: '/pribeh', instagram: '/instagram', kontakt: '/kontakt' };
+  const idFromSlug = Object.fromEntries(Object.entries(slugMap).map(([id, slug]) => [slug, id]));
+
+  // on click: smooth scroll + pushState to clean URL
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href^="#"]');
     if (!a) return;
-    const target = document.querySelector(a.getAttribute('href'));
+    const id = a.getAttribute('href').slice(1);
+    const target = document.getElementById(id);
     if (!target) return;
     e.preventDefault();
     target.scrollIntoView({ behavior: 'smooth' });
-    history.replaceState(null, '', location.pathname);
+    const slug = slugMap[id] || '/';
+    history.pushState({ section: id }, '', slug);
   });
+
+  // on load: if URL is /kontakt etc., scroll to that section instantly
+  const initSlug = location.pathname.replace(/\/$/, '') || '/';
+  const initId = idFromSlug[initSlug];
+  if (initId) {
+    const initEl = document.getElementById(initId);
+    if (initEl) setTimeout(() => initEl.scrollIntoView(), 80);
+  }
 
   // -------- nav background on scroll --------
   const nav = document.querySelector('.nav');
@@ -95,16 +109,17 @@
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobile(); });
   }
 
-  // -------- active nav link on scroll --------
+  // -------- active nav link on scroll + pushState URL update --------
   const sections = Array.from(document.querySelectorAll('section[id], header[id]'));
   const navAnchors = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  const setActive = (id) => {
+    navAnchors.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    const slug = slugMap[id] || '/';
+    if (location.pathname !== slug) history.replaceState({ section: id }, '', slug);
+  };
   if ('IntersectionObserver' in window && navAnchors.length) {
     const navIO = new IntersectionObserver((entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) {
-          navAnchors.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
-        }
-      });
+      entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); });
     }, { rootMargin: '-40% 0px -55% 0px' });
     sections.forEach((s) => navIO.observe(s));
   }
