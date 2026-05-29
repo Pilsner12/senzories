@@ -49,6 +49,14 @@
     });
   }
 
+  // -------- testimonials infinite scroll — duplicate cards --------
+  const track = document.getElementById('testiTrack');
+  if (track) {
+    const clone = track.cloneNode(true);
+    clone.setAttribute('aria-hidden', 'true');
+    track.parentElement.appendChild(clone);
+  }
+
   // -------- nav background on scroll --------
   const nav = document.querySelector('.nav');
   const onScroll = () => {
