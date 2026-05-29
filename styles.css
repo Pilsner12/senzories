@@ -164,7 +164,7 @@ em, .it { font-style: italic; }
 .sticky-bar.visible { transform: translateY(0); }
 .sticky-bar-text {
   color: #fff; font-size: 0.9rem; font-weight: 500;
-  white-space: nowrap; flex-shrink: 0;
+  white-space: nowrap; flex-shrink: 1;
 }
 .sticky-bar-form { display: flex; flex-direction: column; gap: 6px; }
 .sticky-bar-form .sticky-bar-row { display: flex; gap: 8px; flex-wrap: nowrap; }
@@ -172,7 +172,7 @@ em, .it { font-style: italic; }
   padding: 10px 16px; border-radius: var(--r-pill);
   border: 1.5px solid rgba(255,255,255,0.3);
   background: rgba(255,255,255,0.12); color: #fff;
-  font-size: 0.92rem; outline: none; min-width: 200px;
+  font-size: 0.92rem; outline: none; min-width: 0;
   transition: border-color .2s, background .2s;
 }
 .sticky-bar-form input[type="email"]::placeholder { color: rgba(255,255,255,0.55); }
@@ -338,7 +338,6 @@ em, .it { font-style: italic; }
 }
 .hero-signup-row input[type="email"]:focus { border-color: var(--olive-deep); background: #fff; }
 .hero-signup-row .btn-primary { white-space: nowrap; }
-.hero-signup-row input[type="email"] { flex: 1; }
 
 .hero-leaf { position: absolute; pointer-events: none; color: var(--sage); z-index: 2; }
 .leaf-a { top: 92px; left: 39%; width: 88px; opacity: 0.5; }
@@ -713,6 +712,32 @@ em, .it { font-style: italic; }
   .catalog-form .btn { justify-content: center; }
   .float-card { display: none; }
   .show-media .inset { display: none; }
+  .hero-signup { max-width: 100%; box-sizing: border-box; }
+  .hero-signup-row { flex-wrap: wrap; }
+  .hero-signup-row input[type="email"] { min-width: 0; width: 100%; }
+  .hero-signup-row .btn-primary { width: 100%; justify-content: center; }
+  .show-price { font-size: 1.2rem; }
+  .footer { padding-bottom: 70px; }
+}
+@media (max-width: 480px) {
+  /* Hero */
+  .hero-signup { padding: 16px; margin-top: 28px; }
+  .hero-signup-title { font-size: 1rem; }
+  .hero-signup-label { font-size: 0.82rem; }
+  /* Sticky bar */
+  .sticky-bar-text { font-size: 0.78rem; }
+  .sticky-bar-form .btn-primary { padding: 10px 14px; font-size: 0.85rem; }
+  .sticky-bar .gdpr-check { font-size: 0.65rem; gap: 4px; }
+  /* Products */
+  .show-price { font-size: 1rem; }
+  .prod-body h4 { font-size: 1rem; }
+  /* Contact */
+  .contact-row { gap: 12px; }
+  .contact-row .ic { width: 36px; height: 36px; }
+  .field input, .field textarea { padding: 12px 14px; }
+  /* Footer */
+  .footer { padding-bottom: 60px; }
+  .footer-bottom { flex-direction: column; gap: 8px; font-size: 0.75rem; }
 }
 
 .img-fill { width: 100%; height: 100%; object-fit: cover; display: block; }
