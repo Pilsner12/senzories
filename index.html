@@ -60,9 +60,10 @@
 
 <!-- ============ STICKY CTA BAR ============ -->
 <div class="sticky-bar" id="stickyBar" aria-hidden="true">
-  <p class="sticky-bar-text">První várka bude limitovaná — zajistěte si místo</p>
+  <p class="sticky-bar-text">Tahle várka je výjimečná — zanechte email a získejte 10% slevu + PDF kolekci</p>
   <form class="sticky-bar-form" id="stickyBarForm" name="newsletter-sticky" method="POST" data-netlify="true" netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="newsletter-sticky">
+    <input type="hidden" name="subject" value="Dinopark 30.5.2026">
     <p class="hidden"><label>Nevyplňujte<input name="bot-field" title="Nevyplňujte"></label></p>
     <input type="email" name="email" placeholder="vas@email.cz" required aria-label="Váš e-mail">
     <button type="submit" class="btn btn-primary">Chci být první</button>
@@ -113,10 +114,11 @@
       <p class="lead reveal d2">Smyslový tác pro malé objevitele — textury, tvary a prehistorický svět v jednom.</p>
 
       <div class="hero-signup reveal d3">
-        <p class="hero-signup-title">První várka bude limitovaná</p>
-        <p class="hero-signup-label">Zanechte email a budete první, kdo dostane možnost objednat.</p>
+        <p class="hero-signup-title">Tahle várka je výjimečná</p>
+        <p class="hero-signup-label">Zanechte email a dostanete 10% slevu a kompletní PDF produktovou kolekci.</p>
         <form class="hero-signup-form" id="heroSignupForm" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="newsletter">
+          <input type="hidden" name="subject" value="Dinopark 30.5.2026">
           <p class="hidden"><label>Nevyplňujte<input name="bot-field" title="Nevyplňujte"></label></p>
           <input type="email" name="email" placeholder="vas@email.cz" required aria-label="Váš e-mail">
           <button type="submit" class="btn btn-primary">Chci být první</button>
@@ -421,6 +423,7 @@
       <div class="reveal d1">
         <form class="card-form" id="contactForm" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="kontakt">
+          <input type="hidden" name="subject" value="Dinopark 30.5.2026">
           <p class="hidden" style="display:none"><input name="bot-field"></p>
           <h3>Napište mi</h3>
           <p class="sub">Odpovím obvykle do 24 hodin.</p>

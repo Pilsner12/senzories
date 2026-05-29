@@ -302,13 +302,21 @@ em, .it { font-style: italic; }
 .hero-link:hover { color: var(--forest); gap: 12px; }
 .hero-link:hover svg { transform: translateX(3px); }
 
-.hero-signup { margin-top: 44px; }
+.hero-signup {
+  margin-top: 44px;
+  background: rgba(244,238,224,0.82);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 20px 24px 16px;
+  max-width: 460px;
+}
 .hero-signup-title {
   font-family: var(--serif); font-size: 1.18rem; font-weight: 600;
   color: var(--forest); margin-bottom: 6px;
 }
-.hero-signup-label { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 14px; }
-.hero-signup-note { font-size: 0.78rem; color: var(--muted); margin-top: 10px; }
+.hero-signup-label { font-size: 0.9rem; color: var(--ink); margin-bottom: 14px; }
+.hero-signup-note { font-size: 0.78rem; color: var(--ink-soft); margin-top: 10px; }
 .hero-signup-ok { display: none; font-size: 0.95rem; color: var(--olive-deep); font-weight: 500; margin-top: 12px; }
 .hero-signup-form { display: flex; gap: 8px; flex-wrap: nowrap; align-items: stretch; max-width: 420px; }
 .hero-signup-form input[type="email"] {
