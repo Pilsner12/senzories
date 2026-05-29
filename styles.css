@@ -639,7 +639,7 @@ em, .it { font-style: italic; }
 /* ============================================================
    FOOTER
    ============================================================ */
-.footer { background: var(--forest); color: rgba(244,238,224,0.7); padding: clamp(56px,7vw,90px) 0 38px; position: relative; overflow: hidden; }
+.footer { background: var(--forest); color: rgba(244,238,224,0.7); padding: clamp(56px,7vw,90px) 0 100px; position: relative; overflow: hidden; }
 .footer::before { content:""; position:absolute; inset:0; opacity:.1; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
 .footer .wrap { position: relative; z-index: 2; }
 .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; padding-bottom: 40px; border-bottom: 1px solid rgba(244,238,224,0.14); }
