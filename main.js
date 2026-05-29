@@ -39,13 +39,10 @@
   if (sbf) {
     sbf.addEventListener('submit', (ev) => {
       ev.preventDefault();
+      if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'sticky_bar' });
       fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(new FormData(sbf)).toString() })
-        .finally(() => {
-          sbf.style.display = 'none';
-          const ok = document.getElementById('stickyBarOk');
-          if (ok) ok.style.display = 'block';
-        });
+        .finally(() => { window.location.href = '/dekujeme.html'; });
     });
   }
 
@@ -186,22 +183,10 @@
   if (sf) {
     sf.addEventListener('submit', (ev) => {
       ev.preventDefault();
+      if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'hero' });
       fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(new FormData(sf)).toString() })
-        .finally(() => {
-          sf.style.display = 'none';
-          const ok = document.querySelector('#heroSignupOk');
-          if (ok) ok.style.display = 'block';
-          if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'hero' });
-        });
-    });
-  }
-
-  // -------- sticky bar newsletter -> GA4 event --------
-  const sbfOrig = document.getElementById('stickyBarForm');
-  if (sbfOrig) {
-    sbfOrig.addEventListener('submit', () => {
-      if (typeof gtag !== 'undefined') gtag('event', 'generate_lead', { event_category: 'sticky_bar' });
+        .finally(() => { window.location.href = '/dekujeme.html'; });
     });
   }
 
