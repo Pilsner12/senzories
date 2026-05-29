@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Děkujeme — Senzories</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#F4EEE0">
+<link rel="icon" href="assets/logo.png" type="image/png">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .thankyou {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--cream);
+    padding: 40px 20px;
+  }
+  .thankyou-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 48px 40px;
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 32px rgba(75,84,55,0.08);
+  }
+  .thankyou-icon {
+    font-size: 2.8rem;
+    margin-bottom: 16px;
+  }
+  .thankyou-card h1 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--forest);
+    margin-bottom: 12px;
+  }
+  .thankyou-card p {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 28px;
+  }
+  .thankyou-card .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--olive-deep);
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: var(--r-pill);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    margin-bottom: 20px;
+  }
+  .thankyou-card .btn-download:hover {
+    background: var(--forest);
+    transform: translateY(-1px);
+  }
+  .thankyou-back {
+    display: block;
+    margin-top: 16px;
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+    text-decoration: none;
+  }
+  .thankyou-back:hover { color: var(--forest); }
+</style>
+</head>
+<body>
+<div class="thankyou">
+  <div class="thankyou-card">
+    <div class="thankyou-icon">🌿</div>
+    <h1>Výborně!</h1>
+    <p>Váš email jsme přijali. Jako první se dozvíte o spuštění prodeje a získáte <strong>10% slevu</strong>.</p>
+    <p>Mezitím si stáhněte náš PDF katalog s kompletní produktovou kolekcí.</p>
+    <a href="assets/Senzories_katalog 2026.pdf" download class="btn-download">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Stáhnout PDF katalog
+    </a>
+    <a href="/" class="thankyou-back">← Zpět na senzories.cz</a>
+  </div>
+</div>
+</body>
+</html>
