@@ -66,29 +66,57 @@
     });
   }, { passive: true });
 
-  // -------- mobile menu (simple anchor scroll, burger toggles a sheet) --------
+  // -------- mobile menu --------
   const burger = document.querySelector('.nav-burger');
-  if (burger) {
+  const mobileNav = document.querySelector('#navMobile');
+  const closeMobile = () => {
+    burger?.classList.remove('open');
+    mobileNav?.classList.remove('open');
+    burger?.setAttribute('aria-expanded', 'false');
+  };
+  if (burger && mobileNav) {
     burger.addEventListener('click', () => {
-      document.querySelector('#kontakt')?.scrollIntoView({ behavior: 'smooth' });
+      const isOpen = mobileNav.classList.toggle('open');
+      burger.classList.toggle('open', isOpen);
+      burger.setAttribute('aria-expanded', String(isOpen));
     });
+    mobileNav.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMobile));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobile(); });
   }
 
-  // -------- contact form -> mailto --------
-  const TO = 'pohankao@gmail.com';
+  // -------- active nav link on scroll --------
+  const sections = Array.from(document.querySelectorAll('section[id], header[id]'));
+  const navAnchors = Array.from(document.querySelectorAll('.nav-links a[href^="#"]'));
+  if ('IntersectionObserver' in window && navAnchors.length) {
+    const navIO = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          navAnchors.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach((s) => navIO.observe(s));
+  }
+
+  // -------- contact form -> Netlify Forms --------
   const cf = document.querySelector('#contactForm');
   if (cf) {
     cf.addEventListener('submit', (ev) => {
       ev.preventDefault();
-      const fd = new FormData(cf);
-      const name = (fd.get('name') || '').toString();
-      const email = (fd.get('email') || '').toString();
-      const msg = (fd.get('message') || '').toString();
-      const subject = encodeURIComponent('Dotaz ze Senzories webu — ' + name);
-      const body = encodeURIComponent(`Jméno: ${name}\nEmail: ${email}\n\n${msg}`);
-      window.location.href = `mailto:${TO}?subject=${subject}&body=${body}`;
-      const ok = cf.querySelector('.form-ok');
-      if (ok) ok.style.display = 'block';
+      const btn = cf.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = 'Odesílám…'; }
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(cf)).toString()
+      })
+        .then(() => {
+          cf.innerHTML = '<div class="form-success"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="40" height="40"><path d="M5 12l4 4 10-10"/></svg><h3>Zpráva odeslána!</h3><p>Děkujeme, ozveme se do 24 hodin.</p></div>';
+        })
+        .catch(() => {
+          if (btn) { btn.disabled = false; btn.textContent = 'Odeslat zprávu'; }
+          alert('Nepodařilo se odeslat zprávu. Zkuste to prosím znovu.');
+        });
     });
   }
 

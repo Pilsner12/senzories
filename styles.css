@@ -180,8 +180,33 @@ em, .it { font-style: italic; }
 .nav-links a:hover { color: var(--forest); }
 .nav-links a:hover::after { width: 100%; }
 .nav-cta { display: flex; align-items: center; gap: 14px; }
-.nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: 0; padding: 8px; }
+.nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: 0; padding: 8px; cursor: pointer; }
 .nav-burger span { width: 24px; height: 2px; background: var(--forest); border-radius: 2px; transition: .3s; }
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-links a.active { color: var(--forest); }
+.nav-links a.active::after { width: 100%; }
+.nav-mobile {
+  display: flex; position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+  background: rgba(244,238,224,0.97);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  padding: 90px 32px 36px;
+  flex-direction: column; gap: 6px;
+  box-shadow: 0 8px 32px rgba(57,64,44,0.12);
+  transform: translateY(-100%);
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+}
+.nav-mobile.open { transform: translateY(0); pointer-events: all; }
+.nav-mobile a {
+  font-size: 1.2rem; font-weight: 500; color: var(--forest);
+  padding: 14px 0; border-bottom: 1px solid var(--line);
+  text-decoration: none; transition: color .2s;
+}
+.nav-mobile a:last-child { border-bottom: none; }
+.nav-mobile-cta { margin-top: 8px; justify-content: center; }
 
 /* ============================================================
    HERO
@@ -577,3 +602,8 @@ em, .it { font-style: italic; }
 
 .footer-credit { color: inherit; text-decoration: underline; text-underline-offset: 3px; opacity: 0.7; transition: opacity .2s; }
 .footer-credit:hover { opacity: 1; }
+
+.form-success { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 48px 24px; text-align: center; color: var(--olive-deep); }
+.form-success svg { color: var(--sage); }
+.form-success h3 { font-size: 1.4rem; }
+.form-success p { opacity: 0.7; }
