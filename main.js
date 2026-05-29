@@ -87,6 +87,23 @@
       const subject = encodeURIComponent('Dotaz ze Senzories webu — ' + name);
       const body = encodeURIComponent(`Jméno: ${name}\nEmail: ${email}\n\n${msg}`);
       window.location.href = `mailto:${TO}?subject=${subject}&body=${body}`;
+      const ok = cf.querySelector('.form-ok');
+      if (ok) ok.style.display = 'block';
+    });
+  }
+
+  // -------- hero newsletter signup -> Netlify Forms --------
+  const sf = document.querySelector('#heroSignupForm');
+  if (sf) {
+    sf.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(sf)).toString() })
+        .finally(() => {
+          sf.style.display = 'none';
+          const ok = document.querySelector('#heroSignupOk');
+          if (ok) ok.style.display = 'block';
+        });
     });
   }
 
