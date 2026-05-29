@@ -37,6 +37,7 @@
   --r-lg: 32px;
   --r-md: 22px;
   --r-sm: 14px;
+  --r-pill: 100px;
 
   --shadow-soft: 0 30px 60px -28px rgba(57,64,44,0.30), 0 10px 24px -16px rgba(57,64,44,0.18);
   --shadow-card: 0 18px 40px -24px rgba(57,64,44,0.32);
